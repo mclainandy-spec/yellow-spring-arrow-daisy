@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Professional Design — The Snowline Chalet | Forte 1 Design",
+      "hasCanvas": false,
+      "bodyTextLen": 2006,
+      "bodyTextHash": "58d36e5a80039621645d2323fc79209551b31349eb48abd169c9aca99f35c43f",
+      "bodyTextPrefix": "GET A QUOTE PROFESSIONAL DESIGN The Snowline Chalet. 4 bedroom ·",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Professional Design — The Snowline Chalet | Forte 1 Design",
+      "hasCanvas": false,
+      "bodyTextLen": 2006,
+      "bodyTextHash": "58d36e5a80039621645d2323fc79209551b31349eb48abd169c9aca99f35c43f",
+      "bodyTextPrefix": "GET A QUOTE PROFESSIONAL DESIGN The Snowline Chalet. 4 bedroom ·",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
