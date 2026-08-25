@@ -23,30 +23,32 @@ export function SnowlineListing() {
 
 function Hero() {
   return (
-    <section className="relative min-h-hero">
-      <img
-        src="/images/snowline-dusk.jpg"
-        alt="The Snowline Chalet"
-        width={1500}
-        height={844}
-        decoding="async"
-        className="absolute inset-0 size-full object-cover object-hero"
-      />
-      <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/20 to-ink/25" />
-      <div className="relative flex min-h-hero flex-col justify-end px-5 pt-36 pb-16 sm:px-8 sm:pb-20">
+    <section className="relative bg-ink pt-20 sm:min-h-hero sm:bg-paper sm:pt-0">
+      <div className="relative overflow-hidden sm:absolute sm:inset-0">
+        <img
+          src="/images/snowline-dusk.jpg"
+          alt="The Snowline Chalet"
+          width={1500}
+          height={844}
+          decoding="async"
+          className="aspect-hero w-full object-cover object-center sm:absolute sm:inset-0 sm:aspect-auto sm:h-full sm:object-hero"
+        />
+        <div className="absolute inset-0 hidden bg-linear-to-t from-ink/80 via-ink/25 to-ink/20 sm:block" />
+      </div>
+      <div className="relative px-4 pt-8 pb-10 sm:flex sm:min-h-hero sm:flex-col sm:justify-end sm:px-8 sm:pt-36 sm:pb-20">
         <div className="mx-auto w-full max-w-7xl">
           <p className="text-2xs font-medium tracking-label text-cream/70 uppercase">
             Professional Design
           </p>
-          <h1 className="mt-4 max-w-3xl font-display text-5xl leading-display font-normal text-cream sm:text-6xl lg:text-7xl">
+          <h1 className="mt-3 max-w-3xl font-display text-4xl leading-display font-normal text-cream sm:mt-4 sm:text-6xl lg:text-7xl">
             The Snowline<em className="italic"> Chalet.</em>
           </h1>
-          <p className="mt-5 max-w-xl text-sm leading-relaxed text-cream/85 sm:text-base">
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-cream/85 sm:mt-5 sm:text-base">
             4 bedroom · 2 bath · two-story alpine house. A professional design
             listing — photograph, line drawing, interiors, and to-scale floor
             plans.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
             <a
               className="inline-flex h-12 items-center justify-center bg-cream px-7 text-sm font-medium text-ink hover:bg-paper"
               href="#listing"

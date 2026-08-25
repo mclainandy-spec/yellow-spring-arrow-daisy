@@ -19,12 +19,15 @@
 
   --leading-display: 0.92;
   --leading-title: 1.02;
-  --min-height-hero: 88vh;
+  --min-height-hero: 32rem;
 
+
+  --aspect-hero: 16 / 9;
   --aspect-photo: 4 / 3;
   --aspect-interior: 3 / 4;
   --height-header: 5rem;
-  --object-position-hero: 68% center;
+  --object-position-hero: 58% center;
+
   --object-position-great-room: center 62%;
   --object-position-kitchen: center 55%;
 }
@@ -47,9 +50,18 @@
     cursor: pointer;
   }
 
+  @media (min-width: 640px) {
+    :root {
+      --min-height-hero: 88vh;
+      --object-position-hero: 62% center;
+    }
+  }
+
   @supports (min-height: 100dvh) {
-    .min-h-hero {
-      min-height: 88dvh;
+    @media (min-width: 640px) {
+      :root {
+        --min-height-hero: 88dvh;
+      }
     }
   }
 
