@@ -93,7 +93,7 @@ function ListingGallery() {
 
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           <div className="flex flex-col border border-line bg-cream">
-            <div className="overflow-hidden bg-paper-deep">
+            <div className="relative overflow-hidden bg-paper-deep">
               <img
                 src={
                   drawing
@@ -109,6 +109,18 @@ function ListingGallery() {
                 height={844}
                 decoding="async"
                 className="aspect-photo w-full object-cover"
+              />
+              <ShareButton
+                href={
+                  drawing
+                    ? "/images/snowline-ink.jpg"
+                    : "/images/snowline-dusk.jpg"
+                }
+                title={
+                  drawing
+                    ? "The Snowline Chalet line drawing"
+                    : "The Snowline Chalet exterior"
+                }
               />
             </div>
             <div className="flex border-t border-line">
@@ -140,7 +152,7 @@ function ListingGallery() {
           </div>
 
           <div className="flex flex-col border border-line bg-cream">
-            <div className="overflow-hidden bg-paper-deep">
+            <div className="relative overflow-hidden bg-paper-deep">
               <img
                 src="/images/snowline-great-room.jpg"
                 alt="The Snowline Chalet interior — great room"
@@ -148,6 +160,10 @@ function ListingGallery() {
                 height={1920}
                 decoding="async"
                 className="aspect-photo w-full object-cover object-great-room"
+              />
+              <ShareButton
+                href="/images/snowline-great-room.jpg"
+                title="The Snowline Chalet great room"
               />
             </div>
             <div className="px-5 py-5">
@@ -165,7 +181,7 @@ function ListingGallery() {
           </div>
 
           <div className="flex flex-col border border-line bg-cream lg:col-span-2 lg:grid lg:grid-cols-2">
-            <div className="overflow-hidden bg-paper-deep">
+            <div className="relative overflow-hidden bg-paper-deep">
               <img
                 src="/images/snowline-kitchen.jpg"
                 alt="The Snowline Chalet kitchen and dining"
@@ -173,6 +189,10 @@ function ListingGallery() {
                 height={1920}
                 decoding="async"
                 className="aspect-interior w-full object-cover object-kitchen lg:aspect-auto lg:min-h-96 lg:h-full"
+              />
+              <ShareButton
+                href="/images/snowline-kitchen.jpg"
+                title="The Snowline Chalet kitchen and dining"
               />
             </div>
             <div className="flex flex-col justify-center px-5 py-5 sm:px-8">
@@ -192,6 +212,39 @@ function ListingGallery() {
         </div>
       </div>
     </section>
+  );
+}
+
+function ShareButton({ href, title }: { href: string; title: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function onShare() {
+    const url = new URL(href, window.location.href).href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title, text: title, url });
+        return;
+      }
+    } catch (err) {
+      if (err instanceof Error && err.name === "AbortError") return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1600);
+    } catch {
+      window.prompt("Copy image link", url);
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onShare}
+      className="absolute top-3 right-3 z-10 inline-flex h-9 items-center bg-ink px-3 text-2xs font-medium tracking-nav text-cream uppercase hover:bg-walnut"
+    >
+      {copied ? "Copied" : "Share"}
+    </button>
   );
 }
 

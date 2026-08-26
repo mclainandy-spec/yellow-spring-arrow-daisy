@@ -105,13 +105,21 @@
     @media (min-width: 1024px) {
       .card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
     }
-    .photo { overflow: hidden; background: var(--paper-deep); }
+    .photo { position: relative; overflow: hidden; background: var(--paper-deep); }
     .photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
     .photo.portrait img { aspect-ratio: 3 / 4; object-position: center 55%; }
     @media (min-width: 1024px) {
       .card.wide .photo img { aspect-ratio: auto; min-height: 24rem; height: 100%; object-fit: cover; }
     }
     .great-room { object-position: center 62%; }
+    .share {
+      position: absolute; top: 0.75rem; right: 0.75rem; z-index: 2;
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 2.25rem; padding: 0 0.75rem;
+      background: var(--ink); color: var(--cream);
+      font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    .share:hover { background: var(--walnut); }
     .tabs { display: flex; border-top: 1px solid var(--line); }
     .tabs button {
       flex: 1; padding: 0.75rem 1rem; font-size: 0.75rem; font-weight: 500;
@@ -197,9 +205,10 @@
         <h2>4 bedroom, 2 bath chalet</h2>
         <p class="prose">A mountain chalet drawn as a professional design set: warm cedar, black steel, and a stone chimney. The great room is a two-story glass gable facing the range; a primary suite sits on the main floor; three bedrooms and a second bath occupy the upper wings. Four bedrooms, two baths — the upper end of the Forte range, built for snow country.</p>
         <div class="grid">
-          <div class="card">
+          <div class="card" id="exterior">
             <div class="photo">
               <img id="listing-photo" src="images/snowline-dusk.jpg" alt="The Snowline Chalet exterior" width="1500" height="844" />
+              <button type="button" class="share" id="listing-share" data-src="images/snowline-dusk.jpg" data-title="The Snowline Chalet exterior">Share</button>
             </div>
             <div class="tabs">
               <button type="button" class="on" data-view="photo">Photograph</button>
@@ -211,9 +220,10 @@
               <p class="prose" style="margin-top:0.75rem">A four-bedroom, two-bath alpine house with a two-story glass gable.</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card" id="great-room">
             <div class="photo">
               <img class="great-room" src="images/snowline-great-room.jpg" alt="The Snowline Chalet interior — great room" width="1057" height="1920" />
+              <button type="button" class="share" data-src="images/snowline-great-room.jpg" data-title="The Snowline Chalet great room">Share</button>
             </div>
             <div class="card-copy">
               <p class="meta">Interior</p>
@@ -221,9 +231,10 @@
               <p class="prose" style="margin-top:0.75rem">Two-story cedar, black steel, and a hearth. The gable glass opens the living floor to the snow and the range.</p>
             </div>
           </div>
-          <div class="card wide">
+          <div class="card wide" id="kitchen">
             <div class="photo portrait">
               <img src="images/snowline-kitchen.jpg" alt="The Snowline Chalet kitchen and dining" width="1048" height="1920" />
+              <button type="button" class="share" data-src="images/snowline-kitchen.jpg" data-title="The Snowline Chalet kitchen and dining">Share</button>
             </div>
             <div class="card-copy">
               <p class="meta">Interior</p>
@@ -453,6 +464,7 @@
 
   <script>
     const photo = document.getElementById("listing-photo");
+    const listingShare = document.getElementById("listing-share");
     document.querySelectorAll(".tabs button").forEach((btn) => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".tabs button").forEach((b) => b.classList.remove("on"));
@@ -460,6 +472,8 @@
         const drawing = btn.dataset.view === "drawing";
         photo.src = drawing ? "images/snowline-ink.jpg" : "images/snowline-dusk.jpg";
         photo.alt = drawing ? "The Snowline Chalet line drawing" : "The Snowline Chalet exterior";
+        listingShare.dataset.src = drawing ? "images/snowline-ink.jpg" : "images/snowline-dusk.jpg";
+        listingShare.dataset.title = drawing ? "The Snowline Chalet line drawing" : "The Snowline Chalet exterior";
       });
     });
     document.querySelectorAll(".plan-tabs button").forEach((btn) => {
@@ -468,6 +482,28 @@
         btn.classList.add("on");
         document.getElementById("plan-main").hidden = btn.dataset.floor !== "main";
         document.getElementById("plan-upper").hidden = btn.dataset.floor !== "upper";
+      });
+    });
+    document.querySelectorAll(".share").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const url = new URL(btn.dataset.src, window.location.href).href;
+        const title = btn.dataset.title || "The Snowline Chalet";
+        try {
+          if (navigator.share) {
+            await navigator.share({ title, text: title, url });
+            return;
+          }
+        } catch (err) {
+          if (err && err.name === "AbortError") return;
+        }
+        try {
+          await navigator.clipboard.writeText(url);
+          const prev = btn.textContent;
+          btn.textContent = "Copied";
+          setTimeout(() => { btn.textContent = prev; }, 1600);
+        } catch (_) {
+          window.prompt("Copy image link", url);
+        }
       });
     });
   </script>
