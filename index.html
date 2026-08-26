@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Design — The Snowline Chalet | Forte 1 Design</title>
+  <meta name="description" content="4 bedroom · 2 bath · two-story alpine house. Photograph, line drawing, interior, and to-scale floor plans." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#f4f0e8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f4f0e8;
+      --paper-deep: #e6dfd4;
+      --cream: #fffcf7;
+      --ink: #0a0a0a;
+      --ink-soft: #2c2c2c;
+      --mute: #6a6560;
+      --line: #ddd4c6;
+      --walnut: #f66303;
+      --display: "Instrument Serif", "Times New Roman", serif;
+      --sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.55; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: 0; background: none; }
+    .wrap { max-width: 80rem; margin: 0 auto; padding: 0 1.25rem; }
+    @media (min-width: 640px) { .wrap { padding: 0 2rem; } }
+
+    header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      max-width: 80rem; margin: 0 auto; height: 5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      border-bottom: 2px solid var(--walnut); padding: 0 1rem;
+    }
+    @media (min-width: 640px) { .header-inner { padding: 0 2rem; } }
+    .brand img { height: 2.5rem; width: auto; }
+    @media (min-width: 640px) { .brand img { height: 4rem; } }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 2.75rem; padding: 0 0.75rem; text-align: center;
+      font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.04em;
+      text-transform: uppercase; background: var(--ink); color: var(--cream);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .btn:hover { background: var(--walnut); }
+    @media (min-width: 640px) {
+      .btn { height: 2.75rem; padding: 0 1rem; font-size: 0.75rem; letter-spacing: 0.16em; }
+    }
+
+    .hero { background: var(--ink); padding-top: 5rem; }
+    .hero-photo { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; }
+    .hero-copy { padding: 2rem 1rem 2.5rem; color: var(--cream); }
+    .hero-copy .wrap { padding: 0; }
+    .kicker { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: color-mix(in srgb, var(--cream) 70%, transparent); }
+    h1 { font-family: var(--display); font-weight: 400; font-size: 2.25rem; line-height: 0.92; margin-top: 0.75rem; max-width: 48rem; }
+    h1 em { font-style: italic; }
+    .lede { margin-top: 1rem; max-width: 36rem; font-size: 0.875rem; color: color-mix(in srgb, var(--cream) 85%, transparent); }
+    .hero-actions { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .btn-cream { background: var(--cream); color: var(--ink); height: 3rem; padding: 0 1.75rem; font-size: 0.875rem; letter-spacing: 0; text-transform: none; }
+    .btn-cream:hover { background: var(--paper); }
+    .btn-ghost {
+      background: transparent; color: var(--cream); border: 1px solid color-mix(in srgb, var(--cream) 40%, transparent);
+      height: 3rem; padding: 0 1.75rem; font-size: 0.875rem; letter-spacing: 0.16em;
+    }
+    .btn-ghost:hover { background: color-mix(in srgb, var(--cream) 10%, transparent); }
+
+    @media (min-width: 640px) {
+      .hero { position: relative; min-height: 88vh; padding-top: 0; background: var(--paper); }
+      .hero-frame { position: absolute; inset: 0; overflow: hidden; }
+      .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-position: 62% center; }
+      .hero-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,.8), rgba(10,10,10,.25) 40%, rgba(10,10,10,.2)); }
+      .hero-copy {
+        position: relative; min-height: 88vh; display: flex; flex-direction: column; justify-content: flex-end;
+        padding: 9rem 2rem 5rem;
+      }
+      .hero-copy .wrap { padding: 0; max-width: 80rem; width: 100%; margin: 0 auto; }
+      h1 { font-size: 3.75rem; }
+      .lede { font-size: 1rem; }
+      .hero-actions { flex-direction: row; }
+    }
+    @media (min-width: 1024px) { h1 { font-size: 4.5rem; } }
+
+    section { border-bottom: 1px solid var(--line); }
+    .section { padding: 4rem 1.25rem; }
+    @media (min-width: 640px) { .section { padding: 5rem 2rem; } }
+    .label { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); }
+    h2 { font-family: var(--display); font-weight: 400; font-size: 2.25rem; line-height: 1.02; margin-top: 0.75rem; }
+    @media (min-width: 640px) { h2 { font-size: 3rem; } }
+    .prose { margin-top: 1rem; max-width: 42rem; font-size: 0.875rem; color: var(--ink-soft); }
+    .grid { margin-top: 2.5rem; display: grid; gap: 1rem; }
+    @media (min-width: 1024px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .card { display: flex; flex-direction: column; border: 1px solid var(--line); background: var(--cream); }
+    .card.wide { }
+    @media (min-width: 1024px) {
+      .card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    .photo { overflow: hidden; background: var(--paper-deep); }
+    .photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+    .photo.portrait img { aspect-ratio: 3 / 4; object-position: center 55%; }
+    @media (min-width: 1024px) {
+      .card.wide .photo img { aspect-ratio: auto; min-height: 24rem; height: 100%; object-fit: cover; }
+    }
+    .great-room { object-position: center 62%; }
+    .tabs { display: flex; border-top: 1px solid var(--line); }
+    .tabs button {
+      flex: 1; padding: 0.75rem 1rem; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase; background: var(--cream); color: var(--ink-soft);
+    }
+    .tabs button.on { background: var(--ink); color: var(--cream); }
+    .card-copy { padding: 1.25rem; }
+    .card.wide .card-copy { display: flex; flex-direction: column; justify-content: center; }
+    @media (min-width: 640px) { .card.wide .card-copy { padding: 2rem; } }
+    .meta { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); }
+    h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.5rem; line-height: 1.3; margin-top: 0.5rem; }
+
+    .specs { display: grid; gap: 3rem; }
+    @media (min-width: 1024px) { .specs { grid-template-columns: 1.1fr 0.9fr; } }
+    .chips { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; }
+    .chips li {
+      border: 1px solid var(--line); background: var(--cream); padding: 0.25rem 0.75rem;
+      font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft);
+    }
+    .spec-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      overflow: hidden; border: 1px solid var(--line); background: var(--line);
+    }
+    .spec-grid div { background: var(--cream); padding: 1.25rem; }
+    .spec-grid dt { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); }
+    .spec-grid dd { margin-top: 0.25rem; font-family: var(--display); font-style: italic; font-size: 1.25rem; }
+    @media (min-width: 640px) { .spec-grid dd { font-size: 1.5rem; } }
+    .btn-plans { margin-top: 2rem; height: 3rem; padding: 0 1.75rem; font-size: 0.875rem; letter-spacing: 0.16em; }
+
+    .plans { background: var(--cream); }
+    .plan-box { margin-top: 2rem; min-height: 24rem; border: 1px solid var(--line); background: var(--paper); padding: 0.75rem; }
+    @media (min-width: 640px) { .plan-box { padding: 1rem; } }
+    .plan-tabs { display: flex; gap: 0.25rem; margin-bottom: 0.75rem; }
+    .plan-tabs button {
+      height: 2.5rem; padding: 0 1rem; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase; background: color-mix(in srgb, var(--ink) 5%, transparent);
+    }
+    .plan-tabs button.on { background: var(--ink); color: var(--cream); }
+    .plan-scroll { overflow-x: auto; }
+    .plan svg { width: 100%; height: auto; min-width: 18rem; }
+
+    footer { border-top: 2px solid var(--walnut); background: var(--ink); color: var(--cream); }
+    .footer-inner { max-width: 80rem; margin: 0 auto; padding: 4rem 1.25rem; }
+    @media (min-width: 640px) { .footer-inner { padding: 4rem 2rem; } }
+    .footer-inner img { height: 6rem; width: auto; }
+    @media (min-width: 640px) { .footer-inner img { height: 9rem; } }
+    .footer-inner p { margin-top: 1.5rem; max-width: 24rem; font-size: 0.875rem; color: color-mix(in srgb, var(--cream) 70%, transparent); }
+    .legal { margin-top: 2rem; font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--cream) 40%, transparent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="brand" href="https://forte1design.com" target="_blank" rel="noopener noreferrer" aria-label="Forte 1 Design">
+        <img src="images/logo-header.jpg" alt="Forte 1 Design" width="638" height="232" />
+      </a>
+      <a class="btn" href="https://forte1design.com/contact" target="_blank" rel="noopener noreferrer">Request building plans</a>
+    </div>
+  </header>
+
+  <article>
+    <section class="hero">
+      <div class="hero-frame">
+        <img class="hero-photo" src="images/snowline-dusk.jpg" alt="The Snowline Chalet" width="1500" height="844" />
+        <div class="hero-shade"></div>
+      </div>
+      <div class="hero-copy">
+        <div class="wrap">
+          <p class="kicker">Professional Design</p>
+          <h1>The Snowline<em> Chalet.</em></h1>
+          <p class="lede">4 bedroom · 2 bath · two-story alpine house. A professional design listing — photograph, line drawing, interiors, and to-scale floor plans.</p>
+          <div class="hero-actions">
+            <a class="btn btn-cream" href="#listing">View the listing</a>
+            <a class="btn btn-ghost" href="https://forte1design.com/contact" target="_blank" rel="noopener noreferrer">Request building plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="listing" class="section">
+      <div class="wrap">
+        <p class="label">Listing</p>
+        <h2>4 bedroom, 2 bath chalet</h2>
+        <p class="prose">A mountain chalet drawn as a professional design set: warm cedar, black steel, and a stone chimney. The great room is a two-story glass gable facing the range; a primary suite sits on the main floor; three bedrooms and a second bath occupy the upper wings. Four bedrooms, two baths — the upper end of the Forte range, built for snow country.</p>
+        <div class="grid">
+          <div class="card">
+            <div class="photo">
+              <img id="listing-photo" src="images/snowline-dusk.jpg" alt="The Snowline Chalet exterior" width="1500" height="844" />
+            </div>
+            <div class="tabs">
+              <button type="button" class="on" data-view="photo">Photograph</button>
+              <button type="button" data-view="drawing">Line drawing</button>
+            </div>
+            <div class="card-copy">
+              <p class="meta">4 bed · 2 bath · 2,180 sf · Two story</p>
+              <h3>The Snowline Chalet</h3>
+              <p class="prose" style="margin-top:0.75rem">A four-bedroom, two-bath alpine house with a two-story glass gable.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="photo">
+              <img class="great-room" src="images/snowline-great-room.jpg" alt="The Snowline Chalet interior — great room" width="1057" height="1920" />
+            </div>
+            <div class="card-copy">
+              <p class="meta">Interior</p>
+              <h3>Great room</h3>
+              <p class="prose" style="margin-top:0.75rem">Two-story cedar, black steel, and a hearth. The gable glass opens the living floor to the snow and the range.</p>
+            </div>
+          </div>
+          <div class="card wide">
+            <div class="photo portrait">
+              <img src="images/snowline-kitchen.jpg" alt="The Snowline Chalet kitchen and dining" width="1048" height="1920" />
+            </div>
+            <div class="card-copy">
+              <p class="meta">Interior</p>
+              <h3>Kitchen and dining</h3>
+              <p class="prose" style="margin-top:0.75rem;max-width:28rem">Cedar, black millwork, and a stacked-stone fireplace. The kitchen island and dining table sit in one room — the chalet cooked and eaten by the hearth, looking toward the snow.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap specs">
+        <div>
+          <p class="label">Professional set</p>
+          <h2 style="font-style:italic">Drawn to be built.</h2>
+          <p class="prose">Primary suite on the main floor; three bedrooms and the second bath on the upper wings, with a loft looking into the great room. Cedar rain-screen, black steel, stone chimney, standing-seam roof.</p>
+          <ul class="chips">
+            <li>Cedar rain-screen</li>
+            <li>Black steel</li>
+            <li>Stone chimney</li>
+            <li>Standing-seam metal</li>
+          </ul>
+          <a class="btn btn-plans" href="https://forte1design.com/contact" target="_blank" rel="noopener noreferrer">Request building plans</a>
+        </div>
+        <dl class="spec-grid">
+          <div><dt>Bedrooms</dt><dd>4 bed</dd></div>
+          <div><dt>Baths</dt><dd>2</dd></div>
+          <div><dt>Stories</dt><dd>Two</dd></div>
+          <div><dt>Heated area</dt><dd>2,180 sf</dd></div>
+          <div><dt>Garage</dt><dd>None — snow court</dd></div>
+          <div><dt>Width × depth</dt><dd>48' × 34'</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section plans">
+      <div class="wrap">
+        <p class="label">To-scale schematic</p>
+        <h2 style="font-style:italic">Floor plans</h2>
+        <p class="prose">Main floor: great room, kitchen, dining, primary suite, and mud. Upper: loft, three bedrooms, and the second bath.</p>
+        <div class="plan-box">
+          <div class="plan-tabs">
+            <button type="button" class="on" data-floor="main">Main</button>
+            <button type="button" data-floor="upper">Upper</button>
+          </div>
+          <div class="plan-scroll">
+            <div class="plan" id="plan-main">
+              <svg viewBox="0 0 640 470" role="img" aria-label="The Snowline Chalet main floor schematic, 48 feet by 34 feet">
+                <rect width="640" height="470" fill="#fffcf7"/>
+                <g transform="translate(56 48) scale(10)">
+                  <rect x="0" y="0" width="48" height="34" fill="#0a0a0a"/>
+                  <rect x="0.5" y="0.5" width="13" height="17" fill="#fffcf7"/>
+                  <rect x="14" y="0.5" width="33.5" height="17" fill="#fffcf7"/>
+                  <rect x="0.5" y="18" width="13" height="15.5" fill="#fffcf7"/>
+                  <rect x="14" y="18" width="7.5" height="7.4" fill="#fffcf7"/>
+                  <rect x="14" y="26" width="7.5" height="7.5" fill="#fffcf7"/>
+                  <rect x="22" y="18" width="7.5" height="15.5" fill="#fffcf7"/>
+                  <rect x="30" y="18" width="17.5" height="15.5" fill="#fffcf7"/>
+                  <rect x="13.35" y="9" width="0.9" height="7" fill="#fffcf7"/>
+                  <rect x="23" y="17.35" width="4.5" height="0.9" fill="#fffcf7"/>
+                  <rect x="29.35" y="24" width="0.9" height="4" fill="#fffcf7"/>
+                  <rect x="13.5" y="2.6" width="2.2" height="5.2" fill="#0a0a0a"/>
+                  <rect x="15.4" y="3.4" width="0.55" height="3.6" fill="#e6dfd4"/>
+                  <g stroke="#0a0a0a" fill="#fffcf7">
+                    <rect x="15.2" y="-0.02" width="7.4" height="0.54"/><rect x="23.2" y="-0.02" width="7.4" height="0.54"/>
+                    <rect x="31.2" y="-0.02" width="7.4" height="0.54"/><rect x="39.2" y="-0.02" width="7.4" height="0.54"/>
+                    <rect x="2.2" y="-0.02" width="5.2" height="0.54"/><rect x="8" y="-0.02" width="4.2" height="0.54"/>
+                    <rect x="-0.02" y="3.2" width="0.54" height="5.5"/><rect x="-0.02" y="20.5" width="0.54" height="6"/>
+                    <rect x="-0.02" y="27.5" width="0.54" height="4.5"/>
+                    <rect x="47.5" y="3.2" width="0.54" height="6"/><rect x="47.5" y="20.5" width="0.54" height="5"/><rect x="47.5" y="27" width="0.54" height="4.5"/>
+                    <rect x="2.2" y="33.48" width="5" height="0.54"/><rect x="8" y="33.48" width="4.2" height="0.54"/>
+                    <rect x="32.2" y="33.48" width="4" height="0.54"/><rect x="42.5" y="33.48" width="4" height="0.54"/>
+                  </g>
+                  <text x="7" y="4.2" text-anchor="middle" fill="#2c2c2c" font-size="1.15" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Kitchen</text>
+                  <text x="32.5" y="3.6" text-anchor="middle" fill="#2c2c2c" font-size="1.15" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Great room<tspan x="32.5" dy="1.35" font-size="0.78" letter-spacing="0.04" fill="#6a6560" font-weight="400" style="text-transform:none">Two story · glass gable</tspan></text>
+                  <text x="7" y="20.2" text-anchor="middle" fill="#2c2c2c" font-size="1.15" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Primary suite</text>
+                  <text x="17.75" y="20.6" text-anchor="middle" fill="#2c2c2c" font-size="0.95" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Bath</text>
+                  <text x="17.75" y="28.8" text-anchor="middle" fill="#2c2c2c" font-size="0.95" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Closet</text>
+                  <text x="25.75" y="19.8" text-anchor="middle" fill="#2c2c2c" font-size="0.95" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Stair</text>
+                  <text x="38.75" y="20.4" text-anchor="middle" fill="#2c2c2c" font-size="1.15" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Mud</text>
+                  <g fill="#e6dfd4" stroke="#6a6560" stroke-width="0.07">
+                    <rect x="1.2" y="1.2" width="11.6" height="2"/><rect x="5.4" y="9.6" width="6" height="2.8"/>
+                    <rect x="17.2" y="11.8" width="6.4" height="3"/><rect x="24.2" y="12.6" width="9.4" height="3"/><rect x="27" y="9.8" width="3.6" height="2"/>
+                    <rect x="3.2" y="24.8" width="5.4" height="7"/>
+                    <rect x="14.7" y="18.8" width="3.6" height="3.6"/><rect x="18.8" y="19" width="1.5" height="2"/><rect x="14.7" y="23.2" width="6.2" height="1.6"/>
+                    <rect x="31.4" y="18.8" width="15.4" height="1.6"/><rect x="45.6" y="22.4" width="1.4" height="8"/>
+                  </g>
+                  <line x1="3.4" y1="24.8" x2="8.4" y2="24.8" stroke="#6a6560" stroke-width="0.1"/>
+                  <g fill="none" stroke="#6a6560" stroke-width="0.08">
+                    <path d="M 14 20.4 A 2.4 2.4 0 0 1 16.4 22.8"/><line x1="14" y1="20.4" x2="16.4" y2="20.4" stroke-width="0.1"/>
+                    <path d="M 36.2 33.5 A 2.6 2.6 0 0 1 38.8 30.9"/><line x1="36.2" y1="33.5" x2="36.2" y2="30.9" stroke-width="0.1"/>
+                    <path d="M 41.6 33.5 A 2.6 2.6 0 0 0 39 30.9"/><line x1="41.6" y1="33.5" x2="41.6" y2="30.9" stroke-width="0.1"/>
+                  </g>
+                  <g stroke="#6a6560" stroke-width="0.07">
+                    <line x1="22.4" y1="19.2" x2="29.1" y2="19.2"/><line x1="22.4" y1="20.15" x2="29.1" y2="20.15"/>
+                    <line x1="22.4" y1="21.1" x2="29.1" y2="21.1"/><line x1="22.4" y1="22.05" x2="29.1" y2="22.05"/>
+                    <line x1="22.4" y1="23" x2="29.1" y2="23"/><line x1="22.4" y1="23.95" x2="29.1" y2="23.95"/>
+                    <line x1="22.4" y1="24.9" x2="29.1" y2="24.9"/>
+                    <line x1="22.4" y1="26.6" x2="29.1" y2="26.6"/><line x1="22.4" y1="27.55" x2="29.1" y2="27.55"/>
+                    <line x1="22.4" y1="28.5" x2="29.1" y2="28.5"/><line x1="22.4" y1="29.45" x2="29.1" y2="29.45"/>
+                    <line x1="22.4" y1="30.4" x2="29.1" y2="30.4"/><line x1="22.4" y1="31.35" x2="29.1" y2="31.35"/>
+                    <line x1="22.4" y1="32.3" x2="29.1" y2="32.3"/>
+                  </g>
+                  <polygon points="25.75,32.4 26.45,31.2 25.05,31.2" fill="#0a0a0a"/>
+                  <text x="25.75" y="30.6" text-anchor="middle" fill="#0a0a0a" font-size="0.85" font-family="Outfit,sans-serif" letter-spacing="0.08">UP</text>
+                  <g stroke="#0a0a0a" fill="#0a0a0a" stroke-width="0.05">
+                    <line x1="0" y1="-1.8" x2="48" y2="-1.8"/>
+                    <line x1="0" y1="-2.25" x2="0" y2="-1.35"/><line x1="48" y1="-2.25" x2="48" y2="-1.35"/>
+                    <text x="24" y="-2.35" text-anchor="middle" stroke="none" font-size="1" font-family="Outfit,sans-serif" letter-spacing="0.08">48'-0"</text>
+                    <line x1="-2.2" y1="0" x2="-2.2" y2="34"/>
+                    <line x1="-2.65" y1="0" x2="-1.75" y2="0"/><line x1="-2.65" y1="34" x2="-1.75" y2="34"/>
+                    <text x="-3.3" y="17.3" text-anchor="middle" stroke="none" font-size="1" font-family="Outfit,sans-serif" letter-spacing="0.08" transform="rotate(-90 -3.3 17.3)">34'-0"</text>
+                  </g>
+                </g>
+                <g font-family="Outfit,sans-serif" fill="#0a0a0a">
+                  <text x="56" y="448" font-size="11" font-weight="500" letter-spacing="1.8" style="text-transform:uppercase">The Snowline Chalet</text>
+                  <text x="56" y="464" font-size="11" fill="#6a6560" letter-spacing="1.2" style="text-transform:uppercase">Main floor · 1/8" = 1'-0" · North to the range</text>
+                </g>
+                <g transform="translate(590 42)" fill="#0a0a0a" font-family="Outfit,sans-serif">
+                  <circle r="16" fill="none" stroke="#0a0a0a" stroke-width="1.1"/>
+                  <polygon points="0,-11 3.2,6 -3.2,6"/>
+                  <text y="-20" text-anchor="middle" font-size="11" font-weight="500" letter-spacing="1.4">N</text>
+                </g>
+                <g transform="translate(430 448)" fill="#0a0a0a" font-family="Outfit,sans-serif">
+                  <rect x="0" y="0" width="20" height="6"/><rect x="20" y="0" width="20" height="6" fill="none" stroke="#0a0a0a" stroke-width="1"/>
+                  <rect x="40" y="0" width="20" height="6"/><rect x="60" y="0" width="20" height="6" fill="none" stroke="#0a0a0a" stroke-width="1"/>
+                  <text y="18" font-size="9" fill="#6a6560">0</text>
+                  <text x="38" y="18" font-size="9" fill="#6a6560" text-anchor="middle">8</text>
+                  <text x="80" y="18" font-size="9" fill="#6a6560" text-anchor="end">16 ft</text>
+                </g>
+              </svg>
+            </div>
+            <div class="plan" id="plan-upper" hidden>
+              <svg viewBox="0 0 640 470" role="img" aria-label="The Snowline Chalet upper floor schematic, 48 feet by 34 feet">
+                <rect width="640" height="470" fill="#fffcf7"/>
+                <g transform="translate(56 48) scale(10)">
+                  <rect x="0" y="0" width="48" height="34" fill="#0a0a0a"/>
+                  <rect x="0.5" y="0.5" width="13" height="17" fill="#fffcf7"/>
+                  <rect x="14" y="0.5" width="33.5" height="17" fill="#e6dfd4"/>
+                  <rect x="0.5" y="18" width="13" height="15.5" fill="#fffcf7"/>
+                  <rect x="14" y="18" width="7.5" height="15.5" fill="#fffcf7"/>
+                  <rect x="22" y="18" width="7.5" height="15.5" fill="#fffcf7"/>
+                  <rect x="30" y="18" width="17.5" height="15.5" fill="#fffcf7"/>
+                  <rect x="22" y="13" width="16" height="5" fill="#fffcf7"/>
+                  <rect x="23" y="17.35" width="4.5" height="0.9" fill="#fffcf7"/>
+                  <path d="M14.2 0.7 H47.3 V12.8 H38 V13 H22 V17.3 H14.2 Z" fill="none" stroke="#6a6560" stroke-width="0.08" stroke-dasharray="0.45 0.28"/>
+                  <g stroke="#0a0a0a" fill="#fffcf7">
+                    <rect x="15.2" y="-0.02" width="7.4" height="0.54"/><rect x="23.2" y="-0.02" width="7.4" height="0.54"/>
+                    <rect x="31.2" y="-0.02" width="7.4" height="0.54"/><rect x="39.2" y="-0.02" width="7.4" height="0.54"/>
+                    <rect x="2.2" y="-0.02" width="5.2" height="0.54"/><rect x="8" y="-0.02" width="4.2" height="0.54"/>
+                    <rect x="-0.02" y="3.2" width="0.54" height="5.5"/><rect x="-0.02" y="20.5" width="0.54" height="6"/>
+                    <rect x="-0.02" y="27.5" width="0.54" height="4.5"/>
+                    <rect x="47.5" y="3.2" width="0.54" height="6"/><rect x="47.5" y="20.5" width="0.54" height="5"/><rect x="47.5" y="27" width="0.54" height="4.5"/>
+                    <rect x="2.2" y="33.48" width="5" height="0.54"/><rect x="8" y="33.48" width="4.2" height="0.54"/>
+                    <rect x="32.2" y="33.48" width="4" height="0.54"/><rect x="42.5" y="33.48" width="4" height="0.54"/>
+                  </g>
+                  <text x="7" y="3.8" text-anchor="middle" fill="#2c2c2c" font-size="1.15" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Bedroom 2</text>
+                  <text x="31.5" y="5.6" text-anchor="middle" fill="#2c2c2c" font-size="1.15" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Void<tspan x="31.5" dy="1.35" font-size="0.78" letter-spacing="0.04" fill="#6a6560" font-weight="400" style="text-transform:none">Open to great room below</tspan></text>
+                  <text x="30" y="15.2" text-anchor="middle" fill="#2c2c2c" font-size="0.95" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Loft</text>
+                  <text x="7" y="20.2" text-anchor="middle" fill="#2c2c2c" font-size="1.15" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Bedroom 3</text>
+                  <text x="17.75" y="20.4" text-anchor="middle" fill="#2c2c2c" font-size="0.95" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Bath</text>
+                  <text x="25.75" y="19.8" text-anchor="middle" fill="#2c2c2c" font-size="0.95" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Stair</text>
+                  <text x="38.75" y="20.2" text-anchor="middle" fill="#2c2c2c" font-size="1.15" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="0.14" style="text-transform:uppercase">Bedroom 4</text>
+                  <g fill="#e6dfd4" stroke="#6a6560" stroke-width="0.07">
+                    <rect x="4" y="8.2" width="5.4" height="7"/><rect x="1.4" y="14.8" width="3.2" height="2"/>
+                    <rect x="25.2" y="14.2" width="8.4" height="2.2"/>
+                    <rect x="4" y="24.6" width="5.4" height="7"/>
+                    <rect x="14.7" y="22.4" width="3.6" height="3.6"/><rect x="18.8" y="22.6" width="1.5" height="2"/><rect x="14.7" y="30.4" width="6.2" height="1.6"/>
+                    <rect x="35.2" y="24.6" width="7" height="5.4"/>
+                  </g>
+                  <line x1="22" y1="13" x2="38" y2="13" stroke="#0a0a0a" stroke-width="0.12"/>
+                  <line x1="22" y1="13" x2="22" y2="17.5" stroke="#0a0a0a" stroke-width="0.12"/>
+                  <line x1="38" y1="13" x2="38" y2="17.5" stroke="#0a0a0a" stroke-width="0.12"/>
+                  <g stroke="#6a6560" stroke-width="0.07">
+                    <line x1="22.4" y1="19.2" x2="29.1" y2="19.2"/><line x1="22.4" y1="20.15" x2="29.1" y2="20.15"/>
+                    <line x1="22.4" y1="21.1" x2="29.1" y2="21.1"/><line x1="22.4" y1="22.05" x2="29.1" y2="22.05"/>
+                    <line x1="22.4" y1="23" x2="29.1" y2="23"/><line x1="22.4" y1="23.95" x2="29.1" y2="23.95"/>
+                    <line x1="22.4" y1="24.9" x2="29.1" y2="24.9"/>
+                    <line x1="22.4" y1="26.6" x2="29.1" y2="26.6"/><line x1="22.4" y1="27.55" x2="29.1" y2="27.55"/>
+                    <line x1="22.4" y1="28.5" x2="29.1" y2="28.5"/><line x1="22.4" y1="29.45" x2="29.1" y2="29.45"/>
+                    <line x1="22.4" y1="30.4" x2="29.1" y2="30.4"/><line x1="22.4" y1="31.35" x2="29.1" y2="31.35"/>
+                    <line x1="22.4" y1="32.3" x2="29.1" y2="32.3"/>
+                  </g>
+                  <polygon points="25.75,19.4 26.45,20.6 25.05,20.6" fill="#0a0a0a"/>
+                  <text x="25.75" y="21.8" text-anchor="middle" fill="#0a0a0a" font-size="0.85" font-family="Outfit,sans-serif" letter-spacing="0.08">DN</text>
+                  <g stroke="#0a0a0a" fill="#0a0a0a" stroke-width="0.05">
+                    <line x1="0" y1="-1.8" x2="48" y2="-1.8"/>
+                    <text x="24" y="-2.35" text-anchor="middle" stroke="none" font-size="1" font-family="Outfit,sans-serif" letter-spacing="0.08">48'-0"</text>
+                    <line x1="-2.2" y1="0" x2="-2.2" y2="34"/>
+                    <text x="-3.3" y="17.3" text-anchor="middle" stroke="none" font-size="1" font-family="Outfit,sans-serif" letter-spacing="0.08" transform="rotate(-90 -3.3 17.3)">34'-0"</text>
+                  </g>
+                </g>
+                <g font-family="Outfit,sans-serif" fill="#0a0a0a">
+                  <text x="56" y="448" font-size="11" font-weight="500" letter-spacing="1.8" style="text-transform:uppercase">The Snowline Chalet</text>
+                  <text x="56" y="464" font-size="11" fill="#6a6560" letter-spacing="1.2" style="text-transform:uppercase">Upper floor · 1/8" = 1'-0" · North to the range</text>
+                </g>
+                <g transform="translate(590 42)" fill="#0a0a0a" font-family="Outfit,sans-serif">
+                  <circle r="16" fill="none" stroke="#0a0a0a" stroke-width="1.1"/>
+                  <polygon points="0,-11 3.2,6 -3.2,6"/>
+                  <text y="-20" text-anchor="middle" font-size="11" font-weight="500" letter-spacing="1.4">N</text>
+                </g>
+                <g transform="translate(430 448)" fill="#0a0a0a" font-family="Outfit,sans-serif">
+                  <rect x="0" y="0" width="20" height="6"/><rect x="20" y="0" width="20" height="6" fill="none" stroke="#0a0a0a" stroke-width="1"/>
+                  <rect x="40" y="0" width="20" height="6"/><rect x="60" y="0" width="20" height="6" fill="none" stroke="#0a0a0a" stroke-width="1"/>
+                  <text y="18" font-size="9" fill="#6a6560">0</text>
+                  <text x="38" y="18" font-size="9" fill="#6a6560" text-anchor="middle">8</text>
+                  <text x="80" y="18" font-size="9" fill="#6a6560" text-anchor="end">16 ft</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="https://forte1design.com" target="_blank" rel="noopener noreferrer" aria-label="Forte 1 Design">
+        <img src="images/logo.jpg" alt="Forte 1 Design" width="486" height="560" />
+      </a>
+      <p>Conceptual architecture for cabins, family homes, and custom house plans — from a studio with one bath to four bedrooms and 2.5 baths.</p>
+      <p class="legal">© 2026 Forte 1 Design · Unlisted listing</p>
+    </div>
+  </footer>
+
+  <script>
+    const photo = document.getElementById("listing-photo");
+    document.querySelectorAll(".tabs button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tabs button").forEach((b) => b.classList.remove("on"));
+        btn.classList.add("on");
+        const drawing = btn.dataset.view === "drawing";
+        photo.src = drawing ? "images/snowline-ink.jpg" : "images/snowline-dusk.jpg";
+        photo.alt = drawing ? "The Snowline Chalet line drawing" : "The Snowline Chalet exterior";
+      });
+    });
+    document.querySelectorAll(".plan-tabs button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".plan-tabs button").forEach((b) => b.classList.remove("on"));
+        btn.classList.add("on");
+        document.getElementById("plan-main").hidden = btn.dataset.floor !== "main";
+        document.getElementById("plan-upper").hidden = btn.dataset.floor !== "upper";
+      });
+    });
+  </script>
+</body>
+</html>
