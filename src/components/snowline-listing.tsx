@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FloorPlan } from "@/components/floor-plan";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -93,7 +93,7 @@ function ListingGallery() {
 
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           <div className="flex flex-col border border-line bg-cream">
-            <div className="relative overflow-hidden bg-paper-deep">
+            <div className="overflow-hidden bg-paper-deep">
               <img
                 src={
                   drawing
@@ -110,18 +110,6 @@ function ListingGallery() {
                 decoding="async"
                 className="aspect-photo w-full object-cover"
               />
-              <ShareButton
-                href={
-                  drawing
-                    ? "/images/snowline-ink.jpg"
-                    : "/images/snowline-dusk.jpg"
-                }
-                title={
-                  drawing
-                    ? "The Snowline Chalet line drawing"
-                    : "The Snowline Chalet exterior"
-                }
-              />
             </div>
             <div className="flex border-t border-line">
               <TabButton
@@ -137,6 +125,13 @@ function ListingGallery() {
                 Line drawing
               </TabButton>
             </div>
+            <ShareBar
+              media={
+                drawing
+                  ? "/images/snowline-ink.jpg"
+                  : "/images/snowline-dusk.jpg"
+              }
+            />
             <div className="px-5 py-5">
               <p className="text-2xs font-medium tracking-nav text-mute uppercase">
                 4 bed · 2 bath · 2,180 sf · Two story
@@ -152,7 +147,7 @@ function ListingGallery() {
           </div>
 
           <div className="flex flex-col border border-line bg-cream">
-            <div className="relative overflow-hidden bg-paper-deep">
+            <div className="overflow-hidden bg-paper-deep">
               <img
                 src="/images/snowline-great-room.jpg"
                 alt="The Snowline Chalet interior — great room"
@@ -161,11 +156,8 @@ function ListingGallery() {
                 decoding="async"
                 className="aspect-photo w-full object-cover object-great-room"
               />
-              <ShareButton
-                href="/images/snowline-great-room.jpg"
-                title="The Snowline Chalet great room"
-              />
             </div>
+            <ShareBar media="/images/snowline-great-room.jpg" />
             <div className="px-5 py-5">
               <p className="text-2xs font-medium tracking-nav text-mute uppercase">
                 Interior
@@ -181,7 +173,7 @@ function ListingGallery() {
           </div>
 
           <div className="flex flex-col border border-line bg-cream lg:col-span-2 lg:grid lg:grid-cols-2">
-            <div className="relative overflow-hidden bg-paper-deep">
+            <div className="overflow-hidden bg-paper-deep">
               <img
                 src="/images/snowline-kitchen.jpg"
                 alt="The Snowline Chalet kitchen and dining"
@@ -190,23 +182,22 @@ function ListingGallery() {
                 decoding="async"
                 className="aspect-interior w-full object-cover object-kitchen lg:aspect-auto lg:min-h-96 lg:h-full"
               />
-              <ShareButton
-                href="/images/snowline-kitchen.jpg"
-                title="The Snowline Chalet kitchen and dining"
-              />
             </div>
-            <div className="flex flex-col justify-center px-5 py-5 sm:px-8">
-              <p className="text-2xs font-medium tracking-nav text-mute uppercase">
-                Interior
-              </p>
-              <h3 className="mt-2 font-display text-2xl leading-snug italic">
-                Kitchen and dining
-              </h3>
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-soft">
-                Cedar, black millwork, and a stacked-stone fireplace. The
-                kitchen island and dining table sit in one room — the chalet
-                cooked and eaten by the hearth, looking toward the snow.
-              </p>
+            <div className="flex flex-col">
+              <ShareBar media="/images/snowline-kitchen.jpg" />
+              <div className="flex flex-1 flex-col justify-center px-5 py-5 sm:px-8">
+                <p className="text-2xs font-medium tracking-nav text-mute uppercase">
+                  Interior
+                </p>
+                <h3 className="mt-2 font-display text-2xl leading-snug italic">
+                  Kitchen and dining
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-soft">
+                  Cedar, black millwork, and a stacked-stone fireplace. The
+                  kitchen island and dining table sit in one room — the chalet
+                  cooked and eaten by the hearth, looking toward the snow.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -215,36 +206,56 @@ function ListingGallery() {
   );
 }
 
-function ShareButton({ href, title }: { href: string; title: string }) {
-  const [copied, setCopied] = useState(false);
+function ShareBar({ media }: { media: string }) {
+  const [page, setPage] = useState("");
+  useEffect(() => {
+    setPage(window.location.origin + window.location.pathname);
+  }, []);
 
-  async function onShare() {
-    const url = new URL(href, window.location.href).href;
-    try {
-      if (navigator.share) {
-        await navigator.share({ title, text: title, url });
-        return;
-      }
-    } catch (err) {
-      if (err instanceof Error && err.name === "AbortError") return;
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1600);
-    } catch {
-      window.prompt("Copy image link", url);
-    }
-  }
+  const text =
+    "The Snowline Chalet — 4 bedroom, 2 bath alpine house | Forte 1 Design";
+  const mediaUrl = page ? new URL(media, page).href : media;
+  const xHref = page
+    ? `https://twitter.com/intent/tweet?url=${encodeURIComponent(page)}&text=${encodeURIComponent(text)}`
+    : "https://twitter.com/intent/tweet";
+  const pinHref = page
+    ? `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(page)}&media=${encodeURIComponent(mediaUrl)}&description=${encodeURIComponent(text)}`
+    : "https://www.pinterest.com/";
 
   return (
-    <button
-      type="button"
-      onClick={onShare}
-      className="absolute top-3 right-3 z-10 inline-flex h-9 items-center bg-ink px-3 text-2xs font-medium tracking-nav text-cream uppercase hover:bg-walnut"
-    >
-      {copied ? "Copied" : "Share"}
-    </button>
+    <div className="flex items-center gap-2 border-t border-line bg-cream px-5 py-3">
+      <span className="mr-0.5 text-2xs font-medium tracking-nav text-mute uppercase">
+        Share
+      </span>
+      <a
+        className="inline-flex size-9 items-center justify-center border border-line bg-paper text-ink hover:border-ink hover:bg-ink hover:text-cream"
+        href={xHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share this listing on X"
+      >
+        <svg viewBox="0 0 24 24" className="size-3.5" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+          />
+        </svg>
+      </a>
+      <a
+        className="inline-flex size-9 items-center justify-center border border-line bg-paper text-ink hover:border-ink hover:bg-ink hover:text-cream"
+        href={pinHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share this listing on Pinterest"
+      >
+        <svg viewBox="0 0 24 24" className="size-3.5" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M12.017 1.5c-5.888 0-10.017 4.243-10.017 9.714 0 4.125 2.482 7.676 6.069 8.936-.084-.76-.16-1.928.033-2.758.175-.755 1.13-4.816 1.13-4.816s-.288-.59-.288-1.46c0-1.368.793-2.39 1.78-2.39.84 0 1.245.63 1.245 1.385 0 .844-.537 2.106-.813 3.276-.23.978.49 1.776 1.454 1.776 1.745 0 3.087-1.84 3.087-4.494 0-2.35-1.69-3.995-4.107-3.995-2.797 0-4.44 2.096-4.44 4.263 0 .844.325 1.75.73 2.24.08.1.092.187.068.288l-.28 1.144c-.045.183-.148.222-.34.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.16 6.216-5.16 6.216-1.007 0-1.956-.524-2.28-1.143l-.62 2.36c-.226.87-.837 1.958-1.244 2.622A10.02 10.02 0 0 0 12.017 22.5C17.9 22.5 22.5 17.799 22.5 11.214 22.5 5.743 17.9 1.5 12.017 1.5z"
+          />
+        </svg>
+      </a>
+    </div>
   );
 }
 

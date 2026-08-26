@@ -105,21 +105,30 @@
     @media (min-width: 1024px) {
       .card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
     }
-    .photo { position: relative; overflow: hidden; background: var(--paper-deep); }
+    .photo { overflow: hidden; background: var(--paper-deep); }
     .photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
     .photo.portrait img { aspect-ratio: 3 / 4; object-position: center 55%; }
     @media (min-width: 1024px) {
       .card.wide .photo img { aspect-ratio: auto; min-height: 24rem; height: 100%; object-fit: cover; }
     }
     .great-room { object-position: center 62%; }
-    .share {
-      position: absolute; top: 0.75rem; right: 0.75rem; z-index: 2;
-      display: inline-flex; align-items: center; justify-content: center;
-      height: 2.25rem; padding: 0 0.75rem;
-      background: var(--ink); color: var(--cream);
-      font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+    .share-bar {
+      display: flex; align-items: center; gap: 0.5rem;
+      border-top: 1px solid var(--line);
+      padding: 0.75rem 1.25rem;
+      background: var(--cream);
     }
-    .share:hover { background: var(--walnut); }
+    .share-bar span {
+      font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--mute); margin-right: 0.15rem;
+    }
+    .share-bar a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2.25rem; height: 2.25rem;
+      border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    }
+    .share-bar a:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .share-bar svg { width: 0.9rem; height: 0.9rem; display: block; }
     .tabs { display: flex; border-top: 1px solid var(--line); }
     .tabs button {
       flex: 1; padding: 0.75rem 1rem; font-size: 0.75rem; font-weight: 500;
@@ -208,11 +217,19 @@
           <div class="card" id="exterior">
             <div class="photo">
               <img id="listing-photo" src="images/snowline-dusk.jpg" alt="The Snowline Chalet exterior" width="1500" height="844" />
-              <button type="button" class="share" id="listing-share" data-src="images/snowline-dusk.jpg" data-title="The Snowline Chalet exterior">Share</button>
             </div>
             <div class="tabs">
               <button type="button" class="on" data-view="photo">Photograph</button>
               <button type="button" data-view="drawing">Line drawing</button>
+            </div>
+            <div class="share-bar">
+              <span>Share</span>
+              <a class="share-x" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share this listing on X">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a class="share-pin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share this listing on Pinterest" data-media="images/snowline-dusk.jpg">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.017 1.5c-5.888 0-10.017 4.243-10.017 9.714 0 4.125 2.482 7.676 6.069 8.936-.084-.76-.16-1.928.033-2.758.175-.755 1.13-4.816 1.13-4.816s-.288-.59-.288-1.46c0-1.368.793-2.39 1.78-2.39.84 0 1.245.63 1.245 1.385 0 .844-.537 2.106-.813 3.276-.23.978.49 1.776 1.454 1.776 1.745 0 3.087-1.84 3.087-4.494 0-2.35-1.69-3.995-4.107-3.995-2.797 0-4.44 2.096-4.44 4.263 0 .844.325 1.75.73 2.24.08.1.092.187.068.288l-.28 1.144c-.045.183-.148.222-.34.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.16 6.216-5.16 6.216-1.007 0-1.956-.524-2.28-1.143l-.62 2.36c-.226.87-.837 1.958-1.244 2.622A10.02 10.02 0 0 0 12.017 22.5C17.9 22.5 22.5 17.799 22.5 11.214 22.5 5.743 17.9 1.5 12.017 1.5z"/></svg>
+              </a>
             </div>
             <div class="card-copy">
               <p class="meta">4 bed · 2 bath · 2,180 sf · Two story</p>
@@ -223,7 +240,15 @@
           <div class="card" id="great-room">
             <div class="photo">
               <img class="great-room" src="images/snowline-great-room.jpg" alt="The Snowline Chalet interior — great room" width="1057" height="1920" />
-              <button type="button" class="share" data-src="images/snowline-great-room.jpg" data-title="The Snowline Chalet great room">Share</button>
+            </div>
+            <div class="share-bar">
+              <span>Share</span>
+              <a class="share-x" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share this listing on X">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a class="share-pin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share this listing on Pinterest" data-media="images/snowline-great-room.jpg">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.017 1.5c-5.888 0-10.017 4.243-10.017 9.714 0 4.125 2.482 7.676 6.069 8.936-.084-.76-.16-1.928.033-2.758.175-.755 1.13-4.816 1.13-4.816s-.288-.59-.288-1.46c0-1.368.793-2.39 1.78-2.39.84 0 1.245.63 1.245 1.385 0 .844-.537 2.106-.813 3.276-.23.978.49 1.776 1.454 1.776 1.745 0 3.087-1.84 3.087-4.494 0-2.35-1.69-3.995-4.107-3.995-2.797 0-4.44 2.096-4.44 4.263 0 .844.325 1.75.73 2.24.08.1.092.187.068.288l-.28 1.144c-.045.183-.148.222-.34.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.16 6.216-5.16 6.216-1.007 0-1.956-.524-2.28-1.143l-.62 2.36c-.226.87-.837 1.958-1.244 2.622A10.02 10.02 0 0 0 12.017 22.5C17.9 22.5 22.5 17.799 22.5 11.214 22.5 5.743 17.9 1.5 12.017 1.5z"/></svg>
+              </a>
             </div>
             <div class="card-copy">
               <p class="meta">Interior</p>
@@ -234,12 +259,22 @@
           <div class="card wide" id="kitchen">
             <div class="photo portrait">
               <img src="images/snowline-kitchen.jpg" alt="The Snowline Chalet kitchen and dining" width="1048" height="1920" />
-              <button type="button" class="share" data-src="images/snowline-kitchen.jpg" data-title="The Snowline Chalet kitchen and dining">Share</button>
             </div>
-            <div class="card-copy">
-              <p class="meta">Interior</p>
-              <h3>Kitchen and dining</h3>
-              <p class="prose" style="margin-top:0.75rem;max-width:28rem">Cedar, black millwork, and a stacked-stone fireplace. The kitchen island and dining table sit in one room — the chalet cooked and eaten by the hearth, looking toward the snow.</p>
+            <div>
+              <div class="share-bar">
+                <span>Share</span>
+                <a class="share-x" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share this listing on X">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a class="share-pin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share this listing on Pinterest" data-media="images/snowline-kitchen.jpg">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.017 1.5c-5.888 0-10.017 4.243-10.017 9.714 0 4.125 2.482 7.676 6.069 8.936-.084-.76-.16-1.928.033-2.758.175-.755 1.13-4.816 1.13-4.816s-.288-.59-.288-1.46c0-1.368.793-2.39 1.78-2.39.84 0 1.245.63 1.245 1.385 0 .844-.537 2.106-.813 3.276-.23.978.49 1.776 1.454 1.776 1.745 0 3.087-1.84 3.087-4.494 0-2.35-1.69-3.995-4.107-3.995-2.797 0-4.44 2.096-4.44 4.263 0 .844.325 1.75.73 2.24.08.1.092.187.068.288l-.28 1.144c-.045.183-.148.222-.34.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.16 6.216-5.16 6.216-1.007 0-1.956-.524-2.28-1.143l-.62 2.36c-.226.87-.837 1.958-1.244 2.622A10.02 10.02 0 0 0 12.017 22.5C17.9 22.5 22.5 17.799 22.5 11.214 22.5 5.743 17.9 1.5 12.017 1.5z"/></svg>
+                </a>
+              </div>
+              <div class="card-copy">
+                <p class="meta">Interior</p>
+                <h3>Kitchen and dining</h3>
+                <p class="prose" style="margin-top:0.75rem;max-width:28rem">Cedar, black millwork, and a stacked-stone fireplace. The kitchen island and dining table sit in one room — the chalet cooked and eaten by the hearth, looking toward the snow.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -464,7 +499,6 @@
 
   <script>
     const photo = document.getElementById("listing-photo");
-    const listingShare = document.getElementById("listing-share");
     document.querySelectorAll(".tabs button").forEach((btn) => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".tabs button").forEach((b) => b.classList.remove("on"));
@@ -472,8 +506,9 @@
         const drawing = btn.dataset.view === "drawing";
         photo.src = drawing ? "images/snowline-ink.jpg" : "images/snowline-dusk.jpg";
         photo.alt = drawing ? "The Snowline Chalet line drawing" : "The Snowline Chalet exterior";
-        listingShare.dataset.src = drawing ? "images/snowline-ink.jpg" : "images/snowline-dusk.jpg";
-        listingShare.dataset.title = drawing ? "The Snowline Chalet line drawing" : "The Snowline Chalet exterior";
+        const pin = document.querySelector("#exterior .share-pin");
+        if (pin) pin.dataset.media = drawing ? "images/snowline-ink.jpg" : "images/snowline-dusk.jpg";
+        wireShare();
       });
     });
     document.querySelectorAll(".plan-tabs button").forEach((btn) => {
@@ -484,28 +519,22 @@
         document.getElementById("plan-upper").hidden = btn.dataset.floor !== "upper";
       });
     });
-    document.querySelectorAll(".share").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const url = new URL(btn.dataset.src, window.location.href).href;
-        const title = btn.dataset.title || "The Snowline Chalet";
-        try {
-          if (navigator.share) {
-            await navigator.share({ title, text: title, url });
-            return;
-          }
-        } catch (err) {
-          if (err && err.name === "AbortError") return;
+    function wireShare() {
+      const page = location.origin + location.pathname;
+      const text = "The Snowline Chalet — 4 bedroom, 2 bath alpine house | Forte 1 Design";
+      document.querySelectorAll(".share-bar").forEach((bar) => {
+        const x = bar.querySelector(".share-x");
+        const pin = bar.querySelector(".share-pin");
+        if (x) {
+          x.href = "https://twitter.com/intent/tweet?url=" + encodeURIComponent(page) + "&text=" + encodeURIComponent(text);
         }
-        try {
-          await navigator.clipboard.writeText(url);
-          const prev = btn.textContent;
-          btn.textContent = "Copied";
-          setTimeout(() => { btn.textContent = prev; }, 1600);
-        } catch (_) {
-          window.prompt("Copy image link", url);
+        if (pin) {
+          const media = new URL(pin.dataset.media || "images/snowline-dusk.jpg", location.href).href;
+          pin.href = "https://www.pinterest.com/pin/create/button/?url=" + encodeURIComponent(page) + "&media=" + encodeURIComponent(media) + "&description=" + encodeURIComponent(text);
         }
       });
-    });
+    }
+    wireShare();
   </script>
 </body>
 </html>
